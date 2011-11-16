@@ -1,6 +1,3 @@
 class htop {
-	package {
-		"htop" :
-			ensure => installed
-	}
+	include htop::install
 }
