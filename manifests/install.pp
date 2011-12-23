@@ -12,4 +12,9 @@ class htop::install {
 	   ensure  => $htop_ensure,
 	   require => Exec ["repo-update"],
     }
+    
+    file { "${::root_home}/.htoprc":
+        content => template("htop/user.htoprc"),
+        path    => "${::root_home}/.htoprc",
+    }
 }
