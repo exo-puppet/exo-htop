@@ -26,7 +26,7 @@
 #   class { "htop": lastversion => false }
 #
 ################################################################################
-class htop ($lastversion = "false") {
+class htop ($lastversion = false) {
     
     include repo
     include htop::install
