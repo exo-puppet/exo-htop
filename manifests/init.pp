@@ -23,7 +23,7 @@
 #
 # == Examples
 #
-#   class { "htop": lastversion => false }
+#   class { "htop": lastversion => true }
 #
 ################################################################################
 class htop ($lastversion = false) {
