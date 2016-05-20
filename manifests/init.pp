@@ -26,8 +26,19 @@
 #   class { "htop": lastversion => true }
 #
 ################################################################################
-class htop (
-  $lastversion = false) {
-  include repo
-  include htop::install
+class htop ( $lastversion = false ) {
+  include stdlib
+
+  ensure_packages( 'htop' , {
+    'ensure'  => $lastversion ? {
+      true    => latest,
+      default => present
+    } ,
+    'require' => Class['apt::update']
+  })
+
+  file { "${::root_home}/.htoprc":
+    content => template('htop/user.htoprc'),
+    path    => "${::root_home}/.htoprc",
+  }
 }
